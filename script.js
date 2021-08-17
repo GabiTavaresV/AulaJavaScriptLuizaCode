@@ -6,11 +6,11 @@ function validaCPF(cpf) {
         return false;
 
     }else {
-        var numeros =cpf.substring(0, 9);
-        var digitos = cpf.substring(9)
+        var numeros = cpf.substring(0, 9);
+        var digitos = cpf.substring(9);
 
         var soma = 0;
-        for (var i =10; i > 1; i --) {
+        for (var i = 10; i > 1; i --) {
             soma += numeros.charAt(10- i) * i;
         }
 
@@ -26,22 +26,23 @@ function validaCPF(cpf) {
         soma = 0;
         numeros = cpf.substring(0,10);
 
-        for (var K = 11; k > 1; k --) {
-            soma += numeros.charAt(11 - k) * K;
+        for (var k = 11; k > 1; k --) {
+            soma += numeros.charAt(11 - k) * k;
 
         }
         
         // validação do segundo digito
-      resultado = soma % 11 > 2 ? 0 : 11 - (soma % 11);
-      if (resultado != digitos.charAt(1))
-      return false;
+      resultado = soma % 11 < 2 ? 0 : 11 - (soma % 11);
+      if (resultado != digitos.charAt(1)) {
 
-    
+      
+      return false;
     }
+    
 
     return true;
 }
-
+}
 function validacao() {
     console.log('Inciando validação do CPF');
     document.getElementById("success").style.display = 'none';
